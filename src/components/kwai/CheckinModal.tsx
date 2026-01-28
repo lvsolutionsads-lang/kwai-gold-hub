@@ -34,21 +34,23 @@ const CheckinModal = ({ isOpen, onClose, onReceive }: CheckinModalProps) => {
         onClick={onClose}
       />
       
-      {/* Top Image */}
-      <img 
-        src={topoImg} 
-        alt="Prêmio" 
-        className="absolute top-[calc(50%-220px)] left-1/2 -translate-x-1/2 w-[220px] z-10"
-      />
-      
-      {/* Modal Content */}
-      <div className="relative bg-gradient-to-b from-[hsl(18,100%,70%)] to-primary rounded-3xl p-6 mx-4 max-w-[360px] w-full animate-slide-up pt-12">
-        <button 
-          onClick={onClose}
-          className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-white/20 rounded-full text-primary-foreground"
-        >
-          <X className="w-5 h-5" />
-        </button>
+      {/* Modal Container - para posicionar a imagem relativa ao modal */}
+      <div className="relative mx-4 max-w-[360px] w-full">
+        {/* Top Image - posicionada relativa ao container */}
+        <img 
+          src={topoImg} 
+          alt="Prêmio" 
+          className="absolute -top-16 left-1/2 -translate-x-1/2 w-[180px] z-20 pointer-events-none"
+        />
+        
+        {/* Modal Content */}
+        <div className="relative bg-gradient-to-b from-[hsl(18,100%,70%)] to-primary rounded-3xl p-6 pt-16 animate-slide-up">
+          <button 
+            onClick={onClose}
+            className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-white/20 rounded-full text-primary-foreground z-10"
+          >
+            <X className="w-5 h-5" />
+          </button>
 
         {/* Header */}
         <div className="text-center text-primary-foreground mb-4">
@@ -95,6 +97,7 @@ const CheckinModal = ({ isOpen, onClose, onReceive }: CheckinModalProps) => {
         >
           Receber
         </button>
+        </div>
       </div>
     </div>
   );
