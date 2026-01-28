@@ -10,6 +10,17 @@ interface TaskCardProps {
   className?: string;
 }
 
+interface TaskCardProps {
+  image: string;
+  title: string;
+  description: string;
+  countdown?: string;
+  buttonText: string;
+  onClick?: () => void;
+  className?: string;
+  disabled?: boolean;
+}
+
 const TaskCard = ({ 
   image, 
   title, 
@@ -17,15 +28,17 @@ const TaskCard = ({
   countdown, 
   buttonText, 
   onClick,
-  className 
+  className,
+  disabled = false
 }: TaskCardProps) => {
   return (
     <div 
       className={cn(
-        "flex items-center gap-3 bg-card rounded-2xl p-4 border border-border cursor-pointer transition-transform active:scale-[0.98]",
+        "flex items-center gap-3 bg-card rounded-2xl p-4 border border-border transition-transform",
+        !disabled && "cursor-pointer active:scale-[0.98]",
         className
       )}
-      onClick={onClick}
+      onClick={disabled ? undefined : onClick}
     >
       <img src={image} alt="" className="w-14 h-14 flex-shrink-0" />
       
@@ -40,10 +53,16 @@ const TaskCard = ({
       </div>
       
       <button 
-        className="bg-gradient-to-r from-primary to-accent text-primary-foreground px-4 py-2.5 rounded-full font-bold text-sm whitespace-nowrap transition-transform active:scale-95"
+        disabled={disabled}
+        className={cn(
+          "px-4 py-2.5 rounded-full font-bold text-sm whitespace-nowrap transition-transform",
+          disabled 
+            ? "bg-muted text-muted-foreground cursor-not-allowed"
+            : "bg-gradient-to-r from-primary to-accent text-primary-foreground active:scale-95"
+        )}
         onClick={(e) => {
           e.stopPropagation();
-          onClick?.();
+          if (!disabled) onClick?.();
         }}
       >
         {buttonText}

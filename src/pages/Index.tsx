@@ -119,6 +119,7 @@ const Index = () => {
             description="Chame seus amigos para assistir vídeos para ganhar dinheiro."
             countdown={formatCountdown2()}
             buttonText="Convidar"
+            disabled
           />
 
           <div className="bg-card rounded-2xl p-4 border border-border">
@@ -130,8 +131,11 @@ const Index = () => {
               <button className="text-primary font-semibold">Copiar</button>
             </div>
             <div className="flex gap-3">
-              <button className="flex items-center gap-2 px-4 py-2 rounded-full bg-muted text-foreground">
-                <span className="w-5 h-5 bg-success rounded-full" />
+              <button 
+                disabled 
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-muted text-muted-foreground cursor-not-allowed opacity-60"
+              >
+                <span className="w-5 h-5 bg-gray-400 rounded-full" />
                 WhatsApp
               </button>
               <button className="flex items-center gap-2 px-4 py-2 rounded-full bg-muted text-foreground">
@@ -146,6 +150,7 @@ const Index = () => {
             title="Empréstimos Seguros para Você!"
             description="Empréstimos fáceis e rápidos! Realize seus sonhos com nossa solução financeira ideal para você!"
             buttonText="Solicite"
+            disabled
           />
 
           <TaskCard 
@@ -154,6 +159,7 @@ const Index = () => {
             description=""
             countdown={formatCountdown1()}
             buttonText="Ganhe Agora"
+            disabled
           />
         </div>
       </main>
