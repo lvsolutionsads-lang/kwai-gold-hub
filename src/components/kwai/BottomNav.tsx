@@ -9,7 +9,6 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { id: "home", icon: <Home className="w-6 h-6" />, label: "Início" },
-  { id: "invite", icon: <PlusCircle className="w-6 h-6" />, label: "Convidar" },
   { id: "wallet", icon: <Wallet className="w-6 h-6" />, label: "Carteira" },
 ];
 
